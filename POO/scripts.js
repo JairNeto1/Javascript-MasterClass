@@ -39,6 +39,7 @@ listaTabela () {
 
     let imgDelete = document.createElement('img')
     imgDelete.src = 'img/delete.'
+    imgDelete.setAttribute('onclick', 'produto.deletar('+ this.arrayProdutos[i].id +')')
 
     td_acoes.appendChild(imgEdit)
     td_acoes.appendChild(imgDelete)
@@ -86,6 +87,16 @@ cancelar() {
   document.getElementById('preco').value = ''
   
 
+}
+
+deletar() {
+  let tbody = document.getElementById('tbody')
+  for (var i = 0; i < this.arrayProdutos.length, i++) {
+    if(this.arrayProdutos[i].id == id) {
+      this.arrayProdutos.splice(i, 1)
+      tbody.deletRow(i)
+    }
+  }
 }
 
 var produto = new Produto();
